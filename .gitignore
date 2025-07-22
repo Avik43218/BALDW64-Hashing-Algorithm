@@ -1,0 +1,7 @@
+SHA256/
+Steganography/
+benchmark.py
+BALDW64/baldw64.py
+BALDW64/prog.py
+BALDW64/src/__pycache__/
+BALDW64/src/assets/__pycache__/

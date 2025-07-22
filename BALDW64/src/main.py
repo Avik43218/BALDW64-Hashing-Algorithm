@@ -2,7 +2,6 @@ import struct, math, os, unicodedata
 from src.assets.constants import Constants as C
 from src.assets import bitwise_functions as bit
 
-
 def padding(message: bytes):
     message_len_bits = len(message) * 8
     message += b'\x80'
@@ -40,14 +39,14 @@ def get_digest(h0: list, desired_bits: int):
     return final_output
 
 
-def normalize_verf_str(s: str):
+def normalize_token(s: str):
     s = s.strip().lower()
     s = unicodedata.normalize("NFKC", s)
     return s
 
 
-def get_hash_signature(verf_str: str):
-    normal_form = normalize_verf_str(verf_str)
+def get_hash_signature(token: str):
+    normal_form = normalize_token(token)
     sig = 0
 
     for c in normal_form:
@@ -56,7 +55,7 @@ def get_hash_signature(verf_str: str):
     return sig
 
 
-def baldw64(message: bytes, verf_str: str):
+def baldw64(message: bytes, token: str):
     message = padding(message=message)
     h0 = C.H.copy()
 
@@ -107,18 +106,22 @@ def baldw64(message: bytes, verf_str: str):
                 variables_2 = [k, c, i0, a, b, f, h, g, e, d, j, l]
                 a, b, c, d, e, f, g, h, i0, j, k, l = variables_2
 
-    sig = get_hash_signature(verf_str=verf_str)
+    sig = get_hash_signature(token=token)
 
     h0 = [(x + y ^ sig) & 0xFFFFFFFFFFFFFFFF for x, y in zip(h0, [a, b, c, d, e, f, g, h, i0, j, k, l])]
 
     bit_sizes = [256, 272, 288, 304, 336, 384, 400, 416, 432, 464, 480, 496]
 
-    ord_value = sum(map(ord, list(verf_str)))
-    # Normalise ord value for higher inputs
-    adjusted_value = (ord_value // 4) if ord_value > 480 else ord_value
+    try:
+        ord_list = [ord(character) for character in token][-8:] if len(token) >= 8 else IndexError
+        ord_value = sum(ord_list)
+        # Normalise ord value for higher inputs
+        adjusted_value = (ord_value // 4) if ord_value > 480 else ord_value
+        desired_index = adjusted_value % 10
+        desired_bits = bit_sizes[desired_index]
+        final_digest = get_digest(h0=h0, desired_bits=desired_bits)
 
-    desired_bits = min(bit_sizes, key=(lambda x: abs(x - adjusted_value)))
+        return final_digest
 
-    final_digest = get_digest(h0=h0, desired_bits=desired_bits)
-
-    return final_digest
+    except:
+        print("Could not generate hash! Please try again!")
