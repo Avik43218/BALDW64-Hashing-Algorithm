@@ -174,15 +174,15 @@ Entropy is injected from:
 Here are the unbiased benchmark results of BALDW64 against SHA-256 (both implemented in Python from scratch), plotted using Matplotlib:
 
 **1. Execution Time**
-![Execution Time](./src/assets/benchmark/Figure_4.png)
+![Execution Time](./BALDW64/src/assets/benchmark/Figure_4.png)
 
 **2. Memory Usage vs Execution Time**
 
 - BALDW64
-![Memory vs Time BALDW64](./src/assets/benchmark/Figure_5.png)
+![Memory vs Time BALDW64](./BALDW64/src/assets/benchmark/Figure_5.png)
 
 - SHA-256
-![Memory vs Time SHA-256](./src/assets/benchmark/Figure_6.png)
+![Memory vs Time SHA-256](./BALDW64/src/assets/benchmark/Figure_6.png)
 
 **3. General Statistics**
 
