@@ -43,24 +43,24 @@
 ### 4. Compression with Probabilistic and Logarithmic Message Schedule
 
 - Performs 88 compression rounds using:
--- Non-linear bitwise functions for diffusion.
--- Logarithmic and probabilistic transformations to generate the message schedule.
+    - Non-linear bitwise functions for diffusion.
+    - Logarithmic and probabilistic transformations to generate the message schedule.
 - Though probabilistic in construction, the logic is fully deterministic for the same input.
 
 ### 5. Digital Token-Driven Digest Length
 
 - Requires a user-defined "token", such as:
--- User's email ID
--- User's name
+    - User's email ID
+    - User's name
 - This signature:
--- Gets normalized first.
--- Determines the real digest size (e.g., 256, 384, 448 bits, etc.).
--- Guarantees that the same input with the same token always yields the same digest length.
+    - Gets normalized first.
+    - Determines the real digest size (e.g., 256, 384, 448 bits, etc.).
+    - Guarantees that the same input with the same token always yields the same digest length.
 
 ### 6. Probabilistic Yet Secure
 
 - Though it utilizes probabilistic mathematics, the behaviour is deterministic:
--- Same input + same token ---> same digest
+    - Same input + same token ---> same digest
 - This makes it safe for use in systems where reproducibility and verification are required.
 
 ---
@@ -155,8 +155,8 @@ a, b, c, d, e, f, g, h, i0, j, k, l = initial_values_list
 Entropy is injected from:
 
 - A user-defined digital token, affecting:
--- Probabilistic Entropy `P`
--- Determination of length of digest
+    - Probabilistic Entropy `P`
+    - Determination of length of digest
 - `Ψ()` which computes dynamic entropy from numeric distribution in message chunks.
 
 ---
