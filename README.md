@@ -118,7 +118,7 @@ State perturbation functions:
 λ1(x) = rotl(x, 5) & rotl(x, 27) & (x << 7)
 ```
 
-- **Ψ(factors: list, numbers: list)**
+- **Ψ(factors: list, numbers: list)** <br />
 Entropy probability based on numeric character distribution in input:
 ```Python
 P = len(factors) / len(numbers) if possible else 0.0
