@@ -81,37 +81,37 @@
 
 These form the non-linear core of BALDW64.
 
-- **rotr(x, n)**
+- **rotr(x, n)** <br />
 Right rotate a 64-bit integer:
 ```Python
 (x >> n) | (x << (64 - n)) & 0xFFFFFFFFFFFFFFFF
 ```
 
-- **rotl(x, n)**
+- **rotl(x, n)** <br />
 Left rotate a 64-bit integer:
 ```Python
 (x << n) | (x >> (64 - n)) & 0xFFFFFFFFFFFFFFFF
 ```
 
-- **fuse(w, x, y, z)**
+- **fuse(w, x, y, z)** <br />
 Hybrid bitwise logic:
 ```Python
 ((w & x) | (w & y)) ^ ((z & x) ^ (z & y))
 ```
 
-- **diffuse(x, y, z)**
+- **diffuse(x, y, z)** <br />
 Destructive diffusion logic:
 ```Python
 ~(x & ~(x & y)) & ~(z & ~(x & y))
 ```
 
-- **destr(x, y, z, k)**
+- **destr(x, y, z, k)** <br />
 Destructive mixing with round constant:
 ```Python
 ((x & rotl((x ^ k) + (y & z), 11)) ^ (y & rotl((y ^ k) + (z & x), 17)) ^ (z & rotl((z ^ k) + (z & y), 23)))
 ```
 
-- **λ0(x) and λ1(x)**
+- **λ0(x) and λ1(x)** <br />
 State perturbation functions:
 ```Python
 λ0(x) = rotr(x, 16) & rotr(x, 54) & (x >> 36)
