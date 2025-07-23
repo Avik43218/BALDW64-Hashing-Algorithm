@@ -2,7 +2,7 @@
 This program uses a list of 12 variables, H, in the compression loop and a list of 88 other
 constants, K, for high entropy.
 
-The 12 variables are named from a to l, and they are randomly chosen points from two 
+The 12 variables are named from a to l, and they are distinctly chosen points from two 
 mathematical equations: x^2 + y^2 = 256 and 9x^2 - 4y^2 = 36, the first one being a circle 
 and the second one being a hyperbola.
 
