@@ -220,13 +220,13 @@ Avoid in:
 
 ---
 
-## [License](./LICENSE)
+## License
 
-This algorithm is licensed under the Apache 2.0 License.
+This algorithm is licensed under the [Apache 2.0 License](./LICENSE).
 
 ---
 
-Thanks a lot for checking out this work!
+Thanks a lot for checking out this work! <br />
 Feel free to ask any doubts!
 
 **Email ID:** roychoudhuryavik@gmail.com
